@@ -1,13 +1,17 @@
 class ToysController < ApplicationController
   def index
-    render json: Toy.all
+    # /cats/:cat_id:/toys
+    cat = Cat.find(params[:cat_id])
+    render json: cat.toys
   end
 
   def show
+    # /cats/:cat_id/toys/:id
     render json: Toy.find(params[:id])
   end
 
   def create
+    # POST /toys
     toy = Toy.new(toy_params)
 
     if toy.save
