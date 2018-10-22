@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>index</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>All the Cats</h1>
+    <ul>
+      <% @cats.each do |cat| %>
+      <li>
+        <a href="<%= cat_url(cat) %>"><%= cat.name %></a>
+      </li>
+      <% end %>
+    </ul>
+  </body>
+</html>
