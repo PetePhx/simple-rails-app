@@ -1,5 +1,16 @@
 <h1>Make A New Cat!</h1>
 <form action="/cats" method="post">
-  <input type="text" name="cat[name]" id="name" />
-  <button type="submit">Create Cats!</button>
+  <label for="cat_name">Name:</label>
+  <input type="text"
+         name="cat[name]"
+         id="cat_name"
+         value="<%= @cat.name %>" />
+
+  <label for="cat_skill">Skill:</label>
+  <input type="text"
+         name="cat[skill]"
+         id="cat_skill"
+         value="<%= @cat.skill %>" />
+
+  <button type="submit" style="display:block;">Create Cats!</button>
 </form>

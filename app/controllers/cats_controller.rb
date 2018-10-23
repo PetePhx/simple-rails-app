@@ -12,18 +12,20 @@ class CatsController < ApplicationController
 
   def new
     # GET /cats/new
+    @cat = Cat.new
     render :new
   end
 
   def create
     # POST /cats
     # { "cat": { "name": "Sally" } }
-    @cat = Cat.new(params[:cat].permit(:name))
+    @cat = Cat.new(params[:cat].permit(:name, :skill))
 
     if @cat.save
       redirect_to cat_url(@cat)
     else
-      render json: @cat.errors.full_messages, status: :unprocessable_entity
+      # render json: @cat.errors.full_messages, status: :unprocessable_entity
+      render :new
     end
   end
 
@@ -34,7 +36,7 @@ class CatsController < ApplicationController
 
   def update
     cat = Cat.find(params[:id])
-    cat.update(params[:cat].permit(:name))
+    cat.update(params[:cat].permit(:name, :skill))
   end
 
   def destroy
