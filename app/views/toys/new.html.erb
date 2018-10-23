@@ -1,0 +1,23 @@
+<h1><%= @cat.name %>'s New Toy!</h1>
+
+<form action="<%= toys_url %>" method="post">
+  <input type="hidden" name="toy[cat_id]" value="<%= @cat.id %>" />
+
+  <label for="toy_name">Name:</label>
+  <input type="text" name="toy[name]" id="toy_name" value="<%= @toy.name %>"/>
+
+  <label for="toy_toytype">Toy Type:</label>
+  <select name="toy[toytype]" id="toy_toytype">
+    <option value="" disabled selected>Select One:</option>
+    <option value="string" <%= "selected" if @toy.toytype == "string" %> >
+      String
+    </option>
+    <option value="yarnball" <%= "selected" if @toy.toytype == "yarnball" %> >
+      Yarnball
+    </option>
+    <option value="mouse" <%= "selected" if @toy.toytype == "mouse" %> >
+      Mouse
+    </option>
+  </select>
+  <button type="submit">Create Toy!</button>
+</form>

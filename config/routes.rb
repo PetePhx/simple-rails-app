@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :cats do
     # /cats/:cat_id/toys/:toy_id
-    resources :toys, only: [:index]
+    resources :toys, only: [:index, :new]
   end
 
   # /toys/:toy_id

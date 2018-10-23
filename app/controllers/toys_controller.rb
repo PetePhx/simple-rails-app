@@ -10,14 +10,24 @@ class ToysController < ApplicationController
     render json: Toy.find(params[:id])
   end
 
+  def new
+    # GET /cats/:cat_id/toys/new
+    @toy = Toy.new
+    @cat = Cat.find(params[:cat_id])
+    render :new
+  end
+
   def create
     # POST /toys
-    toy = Toy.new(toy_params)
+    @toy = Toy.new(toy_params)
+    @cat = @toy.cat # or Cat.find(params[:toy][:cat_id])
 
-    if toy.save
-      render json: toy
+    if @toy.save
+      redirect_to cat_url(@cat)
     else
-      render json: toy.errors.full_messages, status: :unprocessable_entity
+      render :new
+      # raise "ToyError!"
+      # render json: toy.errors.full_messages, status: :unprocessable_entity
     end
   end
 
