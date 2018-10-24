@@ -37,6 +37,10 @@ class ToysController < ApplicationController
     render json: toy
   end
 
+  def edit
+
+  end
+
   def update
     toy = Toy.find(params[:id])
     if toy.update(toy_params)
